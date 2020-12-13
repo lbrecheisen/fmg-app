@@ -1,0 +1,45 @@
+trigger:
+  - master
+
+jobs:
+  - job: check
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - template: templates/setup.template.yml
+
+      - template: templates/validate.template.yml
+
+  - job: dev
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - template: templates/setup.template.yml
+
+      - script: npx nx affected:build --all --configuration=dev --parallel
+        displayName: build
+
+      - template: templates/archive.template.yml
+        parameters:
+          env: dev
+          app: agent
+
+  - job: prod
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - template: templates/setup.template.yml
+
+      - script: npx nx affected:build --all --configuration=prod --parallel
+        displayName: build
+
+      - template: templates/archive.template.yml
+        parameters:
+          env: prod
+          app: agent

@@ -1,1 +1,1 @@
-# fmg-app
+# fmg

@@ -1,0 +1,54 @@
+{
+  "npmScope": "fmg",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tslint.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "agent": {
+      "tags": []
+    },
+    "agent-e2e": {
+      "tags": [],
+      "implicitDependencies": ["agent"]
+    },
+    "auth": {
+      "tags": []
+    },
+    "config": {
+      "tags": []
+    },
+    "domain": {
+      "tags": []
+    },
+    "static": {
+      "tags": []
+    },
+    "style": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
+    },
+    "util": {
+      "tags": []
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

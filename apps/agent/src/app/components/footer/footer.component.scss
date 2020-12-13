@@ -1,0 +1,16 @@
+@import 'variables';
+
+footer {
+  padding: $space-md;
+  background-color: $accent-color;
+}
+
+span {
+  text-align: center;
+  max-width: 200px;
+}
+
+img {
+  height: 50px;
+  width: 200px;
+}

@@ -1,0 +1,22 @@
+parameters:
+  - name: env
+    type: string
+    default: ''
+
+  - name: app
+    type: string
+    default: ''
+
+steps:
+  - task: ArchiveFiles@2
+    displayName: archive ${{ parameters.app }}
+    inputs:
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/${{ parameters.app }}'
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: $(Build.ArtifactStagingDirectory)/${{ parameters.env }}/${{ parameters.app }}.zip
+      replaceExistingArchive: true
+
+  - publish: $(Build.ArtifactStagingDirectory)/${{ parameters.env }}/${{ parameters.app }}.zip
+    displayName: publish ${{ parameters.app }}
+    artifact: ${{ parameters.env }}-${{ parameters.app }}

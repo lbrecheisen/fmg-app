@@ -1,0 +1,14 @@
+<mat-sidenav-container fullscreen autosize>
+  <mat-sidenav [opened]="this.media.isActive('gt-xs')" mode="side">
+  </mat-sidenav>
+
+  <mat-sidenav-content fxLayout="column">
+    <fmg-agent-header></fmg-agent-header>
+
+    <main fxFlex fxLayout="column" fxLayoutAlign="space-between center">
+      <ng-content></ng-content>
+    </main>
+
+    <fmg-agent-footer></fmg-agent-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

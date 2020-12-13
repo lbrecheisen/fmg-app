@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom", "esnext.asynciterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "downlevelIteration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@fmg/auth": ["libs/auth/src/index.ts"],
+      "@fmg/config": ["libs/config/src/index.ts"],
+      "@fmg/domain": ["libs/domain/src/index.ts"],
+      "@fmg/static": ["libs/static/src/index.ts"],
+      "@fmg/style": ["libs/style/src/index.ts"],
+      "@fmg/ui": ["libs/ui/src/index.ts"],
+      "@fmg/util": ["libs/util/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

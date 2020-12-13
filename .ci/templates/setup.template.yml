@@ -1,0 +1,9 @@
+steps:
+  - task: NodeTool@0
+    displayName: node
+    inputs:
+      versionSpec: 12.x
+      checkLatest: true
+
+  - script: npm ci
+    displayName: install

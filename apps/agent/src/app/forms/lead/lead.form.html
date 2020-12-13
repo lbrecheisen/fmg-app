@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-header fxLayoutAlign="center">
+    <mat-card-title>
+      HMLS Portal <br />
+      Home Search Criteria
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" fxLayout="column" fxLayoutGap="-10px">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input required formControlName="name" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Phone</mat-label>
+        <input
+          [value]="form.get('phone')?.value | phone: 'US'"
+          required
+          formControlName="phone"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Max Price</mat-label>
+        <input type="number" formControlName="maxPrice" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Min Bedrooms</mat-label>
+        <input type="number" formControlName="minBedrooms" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Min Bathrooms</mat-label>
+        <input type="number" formControlName="minBathrooms" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Min Garage Spaces</mat-label>
+        <input type="number" formControlName="minGarageSpaces" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Min Square Footage</mat-label>
+        <input type="number" formControlName="minSquareFootage" matInput />
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <mat-label>Additional Info</mat-label>
+        <textarea formControlName="additionalInfo" matInput></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button
+      (click)="onSubmit()"
+      [disabled]="!form.valid || isSubmitted"
+      mat-button
+    >
+      Submit
+    </button>
+  </mat-card-actions>
+
+  <mat-card-footer>
+    <mat-progress-bar
+      *ngIf="isLoading$ | async"
+      mode="indeterminate"
+      color="accent"
+    ></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>
