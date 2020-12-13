@@ -7,7 +7,7 @@ import { runtimeChecks } from './constants/ngrx.constant';
 import { LeadForm } from './forms/lead/lead.form';
 import { MainPage } from './pages/main/main.page';
 import { MenuPage } from './pages/menu/menu.page';
-import { ArticalPage } from './pages/artical/artical.page';
+import { ArticlePage } from './pages/article/article.page';
 import { SecurePage } from './pages/secure/secure.page';
 import { MainEffects } from './store/effects/main.effects';
 import { mainReducer } from './store/reducers/main.reducer';
@@ -85,7 +85,7 @@ const components = [LayoutComponent, HeaderComponent, FooterComponent];
 
 const forms = [LeadForm];
 
-const pages = [MainPage, MenuPage, SecurePage, ArticalPage];
+const pages = [MainPage, MenuPage, SecurePage, ArticlePage];
 
 @NgModule({
   declarations: [AppComponent, ...components, ...forms, ...pages],
