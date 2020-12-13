@@ -8,10 +8,10 @@ export class SmsService {
 
   constructor() {}
 
-  async send(message: string) {
+  async send(to: string[], message: string) {
     await this.client.send({
-      from: '+18332153240',
-      to: ['+18166462289'],
+      from: environment.azure.communication.from,
+      to,
       message,
     });
   }

@@ -14,7 +14,9 @@ export class LeadEffects {
         ofType(leadActions.set),
         map(({ lead }) => lead),
         filter((lead): lead is Lead => !!lead),
-        switchMap((lead) => this.smsService.send(JSON.stringify(lead)))
+        switchMap((lead) =>
+          this.smsService.send(['+16207201432'], JSON.stringify(lead))
+        )
       ),
     { dispatch: false }
   );

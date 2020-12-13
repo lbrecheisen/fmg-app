@@ -5,13 +5,17 @@ export const environment: Environment = {
   apps: {
     agent: {
       endpoint: 'http://localhost:4200',
-      instrumentation: { key: '8f649925-6479-4886-91b1-613f4f31579b' },
+      instrumentation: { key: '7047d0fb-bb33-4c05-ac6d-ed0350f843f5' },
     },
   },
   azure: {
     communication: {
       connection:
-        'endpoint=https://fmg-com.communication.azure.com/;accesskey=7LnWFhpHHUOSFsm/YOOu37yXUKAbV7BlSeMVPiSrxdTl+c7YYZvNix4j+wWLhk9oNPp5b9wqrhvbykhbbP2R9g==',
+        'endpoint=https://fmg-communication.communication.azure.com/;accesskey=ixVyNTSJcSerR68QmIyClWD3myCXu2uAdYYlQaQJ4Havb2mCI3iVL7kn5NtVuq+N642aRuDtMuUxE331NsrDJQ==',
+      from: '+18338380021',
+    },
+    function: {
+      endpoint: 'https://fmg-function.azurewebsites.net',
     },
   },
 };

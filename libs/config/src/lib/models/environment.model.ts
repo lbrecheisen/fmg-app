@@ -7,6 +7,7 @@ export interface Environment {
     };
   };
   azure: {
-    communication: { connection: string };
+    communication: { connection: string; from: string };
+    function: { endpoint: string };
   };
 }
