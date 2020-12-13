@@ -7,7 +7,7 @@ import { runtimeChecks } from './constants/ngrx.constant';
 import { LeadForm } from './forms/lead/lead.form';
 import { MainPage } from './pages/main/main.page';
 import { MenuPage } from './pages/menu/menu.page';
-import { ArticlePage } from './pages/article/article.page';
+import { ArticlesPage } from './pages/articles/articles.page';
 import { SecurePage } from './pages/secure/secure.page';
 import { MainEffects } from './store/effects/main.effects';
 import { mainReducer } from './store/reducers/main.reducer';
@@ -46,6 +46,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ArticleComponent } from './components/article/article.component';
 
 export const materialModules = [
   MatAutocompleteModule,
@@ -81,11 +82,16 @@ const ngrxModules = [
   ReactiveComponentModule,
 ];
 
-const components = [LayoutComponent, HeaderComponent, FooterComponent];
+const components = [
+  LayoutComponent,
+  HeaderComponent,
+  FooterComponent,
+  ArticleComponent,
+];
 
 const forms = [LeadForm];
 
-const pages = [MainPage, MenuPage, SecurePage, ArticlePage];
+const pages = [MainPage, MenuPage, SecurePage, ArticlesPage];
 
 @NgModule({
   declarations: [AppComponent, ...components, ...forms, ...pages],
