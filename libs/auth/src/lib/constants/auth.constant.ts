@@ -1,6 +1,6 @@
 export const authority =
-  'https://login.microsoftonline.com/15d8fa51-ca10-438a-bf8e-3d8477d6ec29';
+  'https://login.microsoftonline.com/2c0d8916-32b4-442c-ac44-90c430db5c5e';
 
-export const clientId = 'c7928318-ec89-479e-a83d-f7a2d3436c5e';
+export const clientId = 'b49bed92-7cc7-47bf-a47d-d1c6f67f4d95';
 
 export const consentScopes = [];
