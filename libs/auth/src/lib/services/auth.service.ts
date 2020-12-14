@@ -15,6 +15,7 @@ export class AuthService {
     const { oid, name, preferred_username } = this.account.idTokenClaims;
     const [firstName, lastName] = name?.split(' ') ?? ['', ''];
 
+    console.log(this.account);
     return {
       oid: oid ?? '',
       email: preferred_username ?? '',

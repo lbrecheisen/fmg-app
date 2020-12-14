@@ -57,6 +57,7 @@
     "lodash": "^4.17.20",
     "luxon": "^1.25.0",
     "msal": "^1.4.4",
+    "ng-recaptcha": "^6.1.0",
     "ngx-markdown": "^11.0.1",
     "ngx-pipes": "^2.7.5",
     "rxjs": "6.5.5",

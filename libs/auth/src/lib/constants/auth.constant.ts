@@ -3,4 +3,4 @@ export const authority =
 
 export const clientId = 'b49bed92-7cc7-47bf-a47d-d1c6f67f4d95';
 
-export const consentScopes = [];
+export const consentScopes = ['profile'];

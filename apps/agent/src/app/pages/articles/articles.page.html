@@ -1,1 +1,5 @@
-<h1>article page</h1>
+<fmg-agent-layout>
+  <ng-container *ngFor="let article of articles">
+    <fmg-agent-article [article]="article"></fmg-agent-article>
+  </ng-container>
+</fmg-agent-layout>
