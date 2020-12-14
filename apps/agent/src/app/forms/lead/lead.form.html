@@ -1,8 +1,12 @@
-<mat-card>
+<mat-card class="leadFormCard">
   <mat-card-header fxLayoutAlign="center">
     <mat-card-title>
-      HMLS Portal <br />
-      Home Search Criteria
+      <div class="congratsBubble">
+        <div class="congratsText">Congratulations!</div>
+        <p>You have just left the land of unwanted ads and unreliable information.</p> <p>Now, let's get started.</p>
+      </div>
+      <p>What kind of house are you looking for?</p>
+      <p>Let me find it for you!</p>
     </mat-card-title>
   </mat-card-header>
 
@@ -29,34 +33,36 @@
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Max Price</mat-label>
+        <mat-label>Maximum Price</mat-label>
         <input type="number" formControlName="maxPrice" matInput />
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Min Bedrooms</mat-label>
+        <mat-label>Minimum Bedrooms</mat-label>
         <input type="number" formControlName="minBedrooms" matInput />
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Min Bathrooms</mat-label>
+        <mat-label>Minimum Bathrooms</mat-label>
         <input type="number" formControlName="minBathrooms" matInput />
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Min Garage Spaces</mat-label>
+        <mat-label>Minimum Garage Spaces</mat-label>
         <input type="number" formControlName="minGarageSpaces" matInput />
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Min Square Footage</mat-label>
+        <mat-label>Minimum Square Footage</mat-label>
         <input type="number" formControlName="minSquareFootage" matInput />
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <mat-label>Additional Info</mat-label>
+        <mat-label>Additional Information</mat-label>
         <textarea formControlName="additionalInfo" matInput></textarea>
       </mat-form-field>
+
+      <re-captcha siteKey="6Ld0pAUaAAAAAGdoY5MZXS7nDRkZGK7cLCZa5SsL" formControlName="recaptcha"></re-captcha>
     </form>
   </mat-card-content>
 

@@ -1,7 +1,29 @@
+@import 'variables';
+
 .mat-card {
   box-shadow: none;
 }
 
 .mat-card-title {
   text-align: center;
+}
+
+.leadFormCard {
+  margin-top: 80px;
+}
+
+.congratsBubble {
+  border-radius: 10px;
+  background-color: $primary-color;
+  color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: -80px;
+}
+
+.congratsText {
+  font-size: 1.75em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }

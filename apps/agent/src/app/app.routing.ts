@@ -10,7 +10,13 @@ export const routes: Routes = [
   { path: '', component: MainPage },
   {
     path: 'agent/:agentId',
-    children: [{ path: '', component: ArticlesPage, data: { section: 'bio' } }],
+    children: [
+      {
+        path: '',
+        component: ArticlesPage,
+        data: { section: 'bio' },
+      },
+    ],
   },
   { path: 'secure', component: SecurePage, canActivate: [MsalGuard] },
   { path: 'auth', loadChildren: () => AuthModule },

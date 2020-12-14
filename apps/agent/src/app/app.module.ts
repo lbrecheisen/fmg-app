@@ -12,9 +12,9 @@ import { SecurePage } from './pages/secure/secure.page';
 import { MainEffects } from './store/effects/main.effects';
 import { mainReducer } from './store/reducers/main.reducer';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,6 +47,12 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ArticleComponent } from './components/article/article.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MarkdownModule } from 'ngx-markdown';
+import { ArticleForm } from './forms/article/article.form';
+import { ModalComponent } from './components/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 export const materialModules = [
   MatAutocompleteModule,
@@ -69,6 +75,8 @@ export const materialModules = [
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  TextFieldModule,
+  MatDialogModule,
 ];
 
 const ngrxModules = [
@@ -89,27 +97,42 @@ const components = [
   ArticleComponent,
 ];
 
+const thirdParties = [
+  MarkdownModule.forRoot({ sanitize: SecurityContext.NONE }),
+  RecaptchaModule,
+  RecaptchaFormsModule,
+];
+
 const forms = [LeadForm];
 
 const pages = [MainPage, MenuPage, SecurePage, ArticlesPage];
 
 @NgModule({
-  declarations: [AppComponent, ...components, ...forms, ...pages],
+  declarations: [
+    AppComponent,
+    ...components,
+    ...forms,
+    ...pages,
+    ArticleForm,
+    ModalComponent,
+  ],
   imports: [
     AppRouting,
     AuthModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     ConfigModule,
     DomainModule,
     FlexLayoutModule,
     HttpClientModule,
-    ReactiveFormsModule,
     UiModule,
     UtilModule,
     YouTubePlayerModule,
     ...materialModules,
     ...ngrxModules,
+    ...thirdParties,
   ],
   providers: [
     {
@@ -118,5 +141,6 @@ const pages = [MainPage, MenuPage, SecurePage, ArticlesPage];
     },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [ModalComponent],
 })
 export class AppModule {}

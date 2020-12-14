@@ -15,7 +15,20 @@ export class LeadEffects {
         map(({ lead }) => lead),
         filter((lead): lead is Lead => !!lead),
         switchMap((lead) =>
-          this.smsService.send(['+16207201432'], JSON.stringify(lead))
+          this.smsService.send(
+            ['+18163525299'],
+            `A new client has filled out your web form!
+
+Name: ${lead.name}
+Phone: ${lead.phone}
+Email: ${lead.email}
+Maximum Price: ${lead.maxPrice}
+Minimum Bedrooms: ${lead.minBedrooms}
+Minimum Bathrooms: ${lead.minBathrooms}
+Minimum Garage Spaces: ${lead.minGarageSpaces}
+Minimum Square Footage: ${lead.minSquareFootage}
+Additional Information: ${lead.additionalInfo}`
+          )
         )
       ),
     { dispatch: false }

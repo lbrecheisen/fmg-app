@@ -1,0 +1,15 @@
+<mat-card *ngIf="!isEditMode">
+  <mat-card-header>
+    <div mat-card-avatar><img class="articleAvatar" src="https://www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png"></div>
+    <mat-card-title>{{article.title}}</mat-card-title>
+    <mat-card-subtitle>by {{article.created.by}} on {{article.created.on | date: 'shortDate'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <markdown [data]="article.body"></markdown>
+  </mat-card-content>
+  <mat-card-actions *ngIf="isAuthenticated$ | async">
+    <button mat-button (click)="onEditClick()">EDIT</button>
+    <button mat-button (click)="onDeleteClick(article.title)">DELETE</button>
+  </mat-card-actions>
+</mat-card>
+<fmg-agent-article-form [article]="article" (editModeChangeEvent)="changeEditMode($event)" *ngIf="isEditMode"></fmg-agent-article-form>

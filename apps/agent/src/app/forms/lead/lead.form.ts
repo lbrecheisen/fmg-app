@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { fromLead, leadActions } from '@fmg/domain';
 import { Store } from '@ngrx/store';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
   selector: 'fmg-agent-lead-form',
@@ -19,6 +21,7 @@ export class LeadForm {
     minGarageSpaces: [''],
     minSquareFootage: [''],
     additionalInfo: [''],
+    recaptcha: new FormControl(null, Validators.required),
   });
 
   isLoading$ = this.store.select(fromLead.isLoading);
@@ -26,13 +29,23 @@ export class LeadForm {
 
   isSubmitted = false;
 
-  constructor(private store: Store, private fb: FormBuilder) {}
+  constructor(
+    private store: Store,
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) {}
 
   onSubmit() {
     this.isSubmitted = true;
 
-    const { ...lead } = this.form.value;
+    this.store.dispatch(leadActions.set({ lead: this.form.value }));
 
-    this.store.dispatch(leadActions.set({ lead }));
+    this.dialog.open(ModalComponent, {
+      data: {
+        title: 'Success!',
+        body:
+          'We are processing your request now. Our goal is to have your search ready within an hour.',
+      },
+    });
   }
 }
