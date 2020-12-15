@@ -6,6 +6,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { runtimeChecks } from './constants/ngrx.constant';
 import { LeadForm } from './forms/lead/lead.form';
 import { MainPage } from './pages/main/main.page';
+import { SecurePage } from './pages/secure/secure.page';
 import { LeadPage } from './pages/lead/lead.page';
 import { MenuComponent } from './components/menu/menu.component';
 import { ArticlesPage } from './pages/articles/articles.page';
@@ -107,7 +108,7 @@ const thirdParties = [
 
 const forms = [ArticleForm, LeadForm];
 
-const pages = [MainPage, LeadPage, ArticlesPage];
+const pages = [MainPage, LeadPage, ArticlesPage, SecurePage];
 
 @NgModule({
   declarations: [AppComponent, ...components, ...forms, ...pages],

@@ -4,7 +4,7 @@ export const environment: Environment = {
   production: true,
   apps: {
     agent: {
-      endpoint: '',
+      endpoint: 'https://fmg-app.azurewebsites.net/',
       instrumentation: { key: '7047d0fb-bb33-4c05-ac6d-ed0350f843f5' },
     },
   },
@@ -15,7 +15,7 @@ export const environment: Environment = {
       from: '+18338380021',
     },
     function: {
-      endpoint: 'https://fmg-function.azurewebsites.net',
+      endpoint: 'https://fmg-function.azurewebsites.net/api',
       key: 'oFrVLaJgacUTSW7MimmNKosKr2aQ8d7vFhSM4UQhccLiKY9ApI7a0g==',
     },
   },
