@@ -9,7 +9,6 @@ import { MainPage } from './pages/main/main.page';
 import { LeadPage } from './pages/lead/lead.page';
 import { MenuComponent } from './components/menu/menu.component';
 import { ArticlesPage } from './pages/articles/articles.page';
-import { SecurePage } from './pages/secure/secure.page';
 import { MainEffects } from './store/effects/main.effects';
 import { mainReducer } from './store/reducers/main.reducer';
 import { HttpClientModule } from '@angular/common/http';
@@ -108,7 +107,7 @@ const thirdParties = [
 
 const forms = [ArticleForm, LeadForm];
 
-const pages = [MainPage, LeadPage, SecurePage, ArticlesPage];
+const pages = [MainPage, LeadPage, ArticlesPage];
 
 @NgModule({
   declarations: [AppComponent, ...components, ...forms, ...pages],
