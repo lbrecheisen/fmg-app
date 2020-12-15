@@ -2,8 +2,10 @@
 
 main {
   margin: $space-md;
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
 }
-
 .mat-sidenav-container {
   background-color: lightgray;
 }

@@ -1,13 +1,19 @@
-<header fxLayout.xs="column" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
-  <img src="assets/images/rn-logo.png" />
-
+<header
+  fxLayout.xs="column"
+  fxLayoutAlign="space-evenly center"
+  fxLayoutGap="10px"
+>
   <ng-container *ngIf="agent$ | async as agent">
-    <div class="nameContainer">
-      <div class="name">{{agent.name | titlecase}}</div>
+    <img src="assets/images/rn-logo.png" routerLink="/" />
+
+    <div class="nameContainer" routerLink="/">
+      <div class="name">{{ agent.name | titlecase }}</div>
       <div class="title">Real Estate Consultant</div>
     </div>
 
     <span fxFlex></span>
-    <a class="phone" href="tel:{{agent.phone}}">{{agent.phone | phone: 'US'}}</a>
+    <a class="phone" href="tel:{{ agent.phone }}">{{
+      agent.phone | phone: 'US'
+    }}</a>
   </ng-container>
 </header>

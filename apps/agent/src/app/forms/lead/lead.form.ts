@@ -44,7 +44,7 @@ export class LeadForm {
       data: {
         title: 'Success!',
         body:
-          'We are processing your request now. Our goal is to have your search ready within an hour.',
+          'We are now processing your request. Our goal is to have your search ready within an hour. We will reach out to you with the results.',
       },
     });
   }

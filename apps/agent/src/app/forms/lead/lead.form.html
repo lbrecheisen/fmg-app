@@ -3,7 +3,11 @@
     <mat-card-title>
       <div class="congratsBubble">
         <div class="congratsText">Congratulations!</div>
-        <p>You have just left the land of unwanted ads and unreliable information.</p> <p>Now, let's get started.</p>
+        <p>
+          You have just left the land of unwanted ads and unreliable
+          information.
+        </p>
+        <p>Now, let's get started.</p>
       </div>
       <p>What kind of house are you looking for?</p>
       <p>Let me find it for you!</p>
@@ -62,7 +66,12 @@
         <textarea formControlName="additionalInfo" matInput></textarea>
       </mat-form-field>
 
-      <re-captcha id="recaptcha" *ngIf="!isSubmitted" siteKey="6Ld0pAUaAAAAAGdoY5MZXS7nDRkZGK7cLCZa5SsL" formControlName="recaptcha"></re-captcha>
+      <re-captcha
+        id="recaptcha"
+        *ngIf="!isSubmitted"
+        siteKey="6LfX9gcaAAAAAKG_2NLTbhMjVFGWTg7w2kIrH4U0"
+        formControlName="recaptcha"
+      ></re-captcha>
     </form>
   </mat-card-content>
 
