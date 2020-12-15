@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { fromAuth } from '@fmg/auth';
 import { Agent, articleActions, fromAgent, fromArticle } from '@fmg/domain';
 import { select, Store } from '@ngrx/store';
-import { filter, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './articles.page.html',
@@ -18,6 +18,11 @@ export class ArticlesPage implements OnInit {
     tap(({ id }) =>
       this.store.dispatch(articleActions.searchGet({ agentId: id }))
     )
+  );
+  isLead$ = this.store.pipe(
+    select(fromArticle.category),
+    filter((category): category is string => !!category),
+    map((category) => ['buy', 'sell', 'valuate'].includes(category))
   );
 
   isAddingNewArticle = false;

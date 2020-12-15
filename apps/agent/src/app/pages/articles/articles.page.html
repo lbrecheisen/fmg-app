@@ -1,16 +1,35 @@
-<ng-container *ngIf="agent$ | async">
-  <fmg-agent-layout>
+<fmg-agent-layout>
+  <ng-container *ngIf="agent$ | async">
+    <fmg-agent-lead-form *ngIf="isLead$ | async"></fmg-agent-lead-form>
+
     <div fxLayout="row" fxLayoutAlign="center center">
-      <button mat-fab id="addArticleBtn" *ngIf="(isAuthenticated$ | async) && !isAddingNewArticle"
-        (click)="onAddArticleClick()">+</button>
+      <button
+        mat-fab
+        id="addArticleBtn"
+        *ngIf="(isAuthenticated$ | async) && !isAddingNewArticle"
+        (click)="onAddArticleClick()"
+      >
+        +
+      </button>
     </div>
-    <fmg-agent-article-form *ngIf="isAddingNewArticle" (editModeChangeEvent)="onEditModeChangeEvent($event)">
+
+    <fmg-agent-article-form
+      *ngIf="isAddingNewArticle"
+      (editModeChangeEvent)="onEditModeChangeEvent($event)"
+    >
     </fmg-agent-article-form>
+
     <ng-container *ngIf="article$ | async as articles">
       <ng-container *ngFor="let article of articles.items">
         <fmg-agent-article [article]="article"></fmg-agent-article>
       </ng-container>
-      <button *ngIf="continuation$ | async" mat-raised-button (click)="onLoadMoreClick()">Load more</button>
+      <button
+        *ngIf="continuation$ | async"
+        mat-raised-button
+        (click)="onLoadMoreClick()"
+      >
+        Load more
+      </button>
     </ng-container>
-  </fmg-agent-layout>
-</ng-container>
+  </ng-container>
+</fmg-agent-layout>
