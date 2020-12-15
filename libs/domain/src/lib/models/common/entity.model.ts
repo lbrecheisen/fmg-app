@@ -1,6 +1,7 @@
 export interface Entity {
-  key: string;
+  id: string;
+  isRemoved: boolean;
   version: string;
-  updated: { by: string; on: Date };
-  created: { by: string; on: Date };
+  updated: { by: string; on: string };
+  created: { by: string; on: string };
 }

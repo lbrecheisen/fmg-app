@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { authSelectors, AuthState } from '@fmg/auth';
-import { Article, CategoryType } from '@fmg/domain';
-import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { fromAuth } from '@fmg/auth';
+import { Article, articleActions } from '@fmg/domain';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'fmg-agent-article',
@@ -13,23 +11,20 @@ import { switchMap } from 'rxjs/operators';
 export class ArticleComponent implements OnInit {
   @Input()
   article: Article = {
-    key: '',
+    id: '',
     version: '',
     title: '',
     body: '',
-    category: CategoryType.Buy,
-    created: { by: '', on: new Date() },
-    updated: { by: '', on: new Date() },
+    category: '',
+    agentId: '',
+    isRemoved: false,
+    created: { by: '', on: new Date().toISOString() },
+    updated: { by: '', on: new Date().toISOString() },
   };
-
-  isAuthenticated$: Observable<boolean>;
+  isAuthenticated$ = this.store.pipe(select(fromAuth.isAuthenticated));
   isEditMode = false;
 
-  constructor(authStore: Store<AuthState>) {
-    this.isAuthenticated$ = authStore
-      .select(authSelectors.isAuthenticated)
-      .pipe(switchMap(() => of(true)));
-  }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {}
 
@@ -41,8 +36,9 @@ export class ArticleComponent implements OnInit {
     if (
       confirm(`Are you sure you want to delete the article titled '${title}'?`)
     ) {
-      //TODO: implement article deletion
-      console.log('article deleted');
+      this.store.dispatch(
+        articleActions.remove({ article: { ...this.article, isRemoved: true } })
+      );
     }
   }
 

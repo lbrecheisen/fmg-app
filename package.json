@@ -61,6 +61,7 @@
     "ngx-markdown": "^11.0.1",
     "ngx-pipes": "^2.7.5",
     "rxjs": "6.5.5",
+    "uuid": "^8.3.2",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
@@ -78,6 +79,7 @@
     "@types/lodash": "^4.14.165",
     "@types/luxon": "^1.25.0",
     "@types/node": "~8.9.4",
+    "@types/uuid": "^8.3.0",
     "codelyzer": "~5.0.1",
     "cypress": "^4.1.0",
     "dotenv": "6.2.0",

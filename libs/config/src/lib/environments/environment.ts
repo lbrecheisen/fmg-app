@@ -15,7 +15,8 @@ export const environment: Environment = {
       from: '+18338380021',
     },
     function: {
-      endpoint: 'https://fmg-function.azurewebsites.net',
+      endpoint: 'https://fmg-function.azurewebsites.net/api',
+      key: 'oFrVLaJgacUTSW7MimmNKosKr2aQ8d7vFhSM4UQhccLiKY9ApI7a0g==',
     },
   },
 };

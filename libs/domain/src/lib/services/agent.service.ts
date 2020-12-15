@@ -1,20 +1,21 @@
-import { Lead } from '../models/leads/lead.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '@fmg/config';
 import { HttpClient } from '@angular/common/http';
+import { Agent } from '../models/agents/agent.model';
 
 @Injectable({ providedIn: 'root' })
-export class LeadService {
-  private base = `${environment.azure.function.endpoint}/leads`;
+export class AgentService {
+  private base = `${environment.azure.function.endpoint}/agents`;
 
   constructor(private http: HttpClient) {}
 
-  insert(lead: Lead): Observable<Lead> {
+  find(id: string): Observable<Agent | null> {
     const opts = {
+      params: { ...(!!id ? { id } : {}) },
       headers: { 'X-Functions-Key': environment.azure.function.key },
     };
 
-    return this.http.post<Lead>(this.base, lead, opts);
+    return this.http.get<Agent | null>(this.base, opts);
   }
 }

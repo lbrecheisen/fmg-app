@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Article, CategoryType } from '@fmg/domain';
+import { Article, articleActions } from '@fmg/domain';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'fmg-agent-article-form',
@@ -10,13 +11,15 @@ import { Article, CategoryType } from '@fmg/domain';
 export class ArticleForm implements OnInit {
   @Input()
   article: Article = {
-    key: '',
+    id: '',
     version: '',
     title: '',
     body: '',
-    category: CategoryType.Buy,
-    created: { by: '', on: new Date() },
-    updated: { by: '', on: new Date() },
+    category: '',
+    agentId: '',
+    isRemoved: false,
+    created: { by: '', on: new Date().toISOString() },
+    updated: { by: '', on: new Date().toISOString() },
   };
 
   @Output()
@@ -24,12 +27,14 @@ export class ArticleForm implements OnInit {
 
   form: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(private store: Store, fb: FormBuilder) {
     this.form = fb.group({
-      key: '',
+      id: '',
       title: ['', Validators.required],
       body: ['', Validators.required],
+      category: '',
       version: '',
+      isRemoved: false,
       updated: fb.group({ by: '', on: '' }),
       created: fb.group({ by: '', on: '' }),
     });
@@ -41,8 +46,7 @@ export class ArticleForm implements OnInit {
 
   onSaveClick(): void {
     if (this.form.valid) {
-      // TODO: implement save functionality
-      console.log('Your changes have been saved!');
+      this.store.dispatch(articleActions.insert({ article: this.form.value }));
       this.editModeChangeEvent.emit(false);
     }
   }

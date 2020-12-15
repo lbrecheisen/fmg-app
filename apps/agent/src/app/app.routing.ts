@@ -11,11 +11,13 @@ export const routes: Routes = [
   {
     path: 'agent/:agentId',
     children: [
-      {
-        path: '',
-        component: ArticlesPage,
-        data: { section: 'bio' },
-      },
+      { path: '', component: MainPage },
+      { path: 'buy', component: ArticlesPage },
+      { path: 'sell', component: ArticlesPage },
+      { path: 'valuation', component: ArticlesPage },
+      { path: 'market', component: ArticlesPage },
+      { path: 'bio', component: ArticlesPage },
+      { path: 'videos', component: ArticlesPage },
     ],
   },
   { path: 'secure', component: SecurePage, canActivate: [MsalGuard] },

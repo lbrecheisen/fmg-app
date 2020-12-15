@@ -62,7 +62,7 @@
         <textarea formControlName="additionalInfo" matInput></textarea>
       </mat-form-field>
 
-      <re-captcha siteKey="6Ld0pAUaAAAAAGdoY5MZXS7nDRkZGK7cLCZa5SsL" formControlName="recaptcha"></re-captcha>
+      <re-captcha id="recaptcha" *ngIf="!isSubmitted" siteKey="6Ld0pAUaAAAAAGdoY5MZXS7nDRkZGK7cLCZa5SsL" formControlName="recaptcha"></re-captcha>
     </form>
   </mat-card-content>
 

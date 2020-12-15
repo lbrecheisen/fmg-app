@@ -16,6 +16,7 @@ export const environment: Environment = {
     },
     function: {
       endpoint: 'https://fmg-function.azurewebsites.net',
+      key: 'oFrVLaJgacUTSW7MimmNKosKr2aQ8d7vFhSM4UQhccLiKY9ApI7a0g==',
     },
   },
 };

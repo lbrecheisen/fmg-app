@@ -38,7 +38,7 @@ export class LeadForm {
   onSubmit() {
     this.isSubmitted = true;
 
-    this.store.dispatch(leadActions.set({ lead: this.form.value }));
+    this.store.dispatch(leadActions.insert({ lead: { ...this.form.value } }));
 
     this.dialog.open(ModalComponent, {
       data: {

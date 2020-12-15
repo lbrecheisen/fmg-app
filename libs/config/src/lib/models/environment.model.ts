@@ -8,6 +8,6 @@ export interface Environment {
   };
   azure: {
     communication: { connection: string; from: string };
-    function: { endpoint: string };
+    function: { endpoint: string; key: string };
   };
 }

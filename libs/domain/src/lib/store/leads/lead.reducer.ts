@@ -10,7 +10,7 @@ const initialState: LeadState = {
 };
 
 const ons: On<LeadState>[] = [
-  on(leadActions.get, (state, {}) =>
+  on(leadActions.insert, (state, {}) =>
     produce<LeadState>(state, (draft) => {
       draft.isLoading = true;
     })
