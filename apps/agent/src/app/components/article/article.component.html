@@ -1,12 +1,9 @@
 <ng-container *ngIf="!!article">
   <mat-card *ngIf="!isEditMode">
     <mat-card-header>
-      <div mat-card-avatar>
-        <img class="articleAvatar" src="https://www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png" />
-      </div>
+      <img mat-card-avatar [src]="!!article.thumbnailUrl ? article.thumbnailUrl : '/assets/images/fmg-logo.png'" />
       <mat-card-title>{{ article.title }}</mat-card-title>
-      <mat-card-subtitle>by {{ article.created.by }} on
-        {{ article.created.on | date: 'shortDate' }}</mat-card-subtitle>
+      <mat-card-subtitle>by {{ article.agentId }} on {{ article.created.on | date: 'shortDate' }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <markdown [data]="article.body"></markdown>

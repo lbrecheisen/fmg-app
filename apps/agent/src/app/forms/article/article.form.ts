@@ -12,11 +12,12 @@ export class ArticleForm implements OnInit {
   @Input()
   article: Article = {
     id: '',
-    version: '',
     title: '',
     body: '',
     category: '',
     agentId: '',
+    thumbnailUrl: '',
+    version: '',
     isRemoved: false,
     created: { by: '', on: new Date().toISOString() },
     updated: { by: '', on: new Date().toISOString() },
@@ -33,6 +34,8 @@ export class ArticleForm implements OnInit {
       title: ['', Validators.required],
       body: ['', Validators.required],
       category: '',
+      agentId: '',
+      thumbnailUrl: '',
       version: '',
       isRemoved: false,
       updated: fb.group({ by: '', on: '' }),

@@ -5,4 +5,5 @@ export interface Article extends Entity {
   category: string | null;
   title: string;
   body: string;
+  thumbnailUrl: string | null;
 }
