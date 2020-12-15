@@ -2,7 +2,8 @@
 
 footer {
   padding: $space-md;
-  background-color: $accent-color;
+  background-color: white;
+  border-top: 5px solid $primary-color;
 }
 
 span {

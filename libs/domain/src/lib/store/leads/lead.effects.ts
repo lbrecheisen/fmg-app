@@ -35,7 +35,7 @@ export class LeadEffects {
       tap(([lead, agent]) =>
         this.smsService.send(
           [agent.phone],
-          `A new client has filled out your web form!
+          `A new client has filled out your form!
 
 Name: ${lead.name}
 Phone: ${lead.phone}

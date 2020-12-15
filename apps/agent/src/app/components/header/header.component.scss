@@ -1,0 +1,12 @@
+@import 'variables';
+
+header {
+  padding: $space-md;
+  background-color: white;
+  border-bottom: 5px solid $primary-color;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}

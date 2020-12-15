@@ -1,4 +1,3 @@
-import { lexicon } from '../../constants/lexicon.constant';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  lexicon = lexicon;
-
   constructor() {}
 }

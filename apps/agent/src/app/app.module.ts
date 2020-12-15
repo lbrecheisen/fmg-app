@@ -6,7 +6,8 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { runtimeChecks } from './constants/ngrx.constant';
 import { LeadForm } from './forms/lead/lead.form';
 import { MainPage } from './pages/main/main.page';
-import { MenuPage } from './pages/menu/menu.page';
+import { LeadPage } from './pages/lead/lead.page';
+import { MenuComponent } from './components/menu/menu.component';
 import { ArticlesPage } from './pages/articles/articles.page';
 import { SecurePage } from './pages/secure/secure.page';
 import { MainEffects } from './store/effects/main.effects';
@@ -91,10 +92,12 @@ const ngrxModules = [
 ];
 
 const components = [
-  LayoutComponent,
-  HeaderComponent,
-  FooterComponent,
   ArticleComponent,
+  FooterComponent,
+  HeaderComponent,
+  LayoutComponent,
+  MenuComponent,
+  ModalComponent,
 ];
 
 const thirdParties = [
@@ -103,19 +106,12 @@ const thirdParties = [
   RecaptchaFormsModule,
 ];
 
-const forms = [LeadForm];
+const forms = [ArticleForm, LeadForm];
 
-const pages = [MainPage, MenuPage, SecurePage, ArticlesPage];
+const pages = [MainPage, LeadPage, SecurePage, ArticlesPage];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ...components,
-    ...forms,
-    ...pages,
-    ArticleForm,
-    ModalComponent,
-  ],
+  declarations: [AppComponent, ...components, ...forms, ...pages],
   imports: [
     AppRouting,
     AuthModule,

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
 import { AuthModule } from '@fmg/auth';
 import { ArticlesPage } from './pages/articles/articles.page';
+import { LeadPage } from './pages/lead/lead.page';
 
 export const routes: Routes = [
   { path: '', component: MainPage },
@@ -12,12 +13,13 @@ export const routes: Routes = [
     path: 'agent/:agentId',
     children: [
       { path: '', component: MainPage },
+      { path: 'search', component: LeadPage },
       { path: 'buy', component: ArticlesPage },
       { path: 'sell', component: ArticlesPage },
-      { path: 'valuation', component: ArticlesPage },
+      { path: 'valuate', component: ArticlesPage },
       { path: 'market', component: ArticlesPage },
       { path: 'bio', component: ArticlesPage },
-      { path: 'videos', component: ArticlesPage },
+      { path: 'archive', component: ArticlesPage },
     ],
   },
   { path: 'secure', component: SecurePage, canActivate: [MsalGuard] },
