@@ -2,11 +2,9 @@ import { agentActions } from './agent.actions';
 import { Injectable } from '@angular/core';
 import { InsightsService } from '@fmg/util';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AgentService } from '../../services/agent.service';
 import { of } from 'rxjs';
-import { Agent } from '../../models/agents/agent.model';
-import { articleActions } from '../articles';
 
 @Injectable({ providedIn: 'root' })
 export class AgentEffects {
@@ -18,15 +16,6 @@ export class AgentEffects {
       catchError((error) =>
         of(agentActions.error({ error: JSON.stringify(error) }))
       )
-    )
-  );
-
-  set$ = createEffect(() =>
-    this.action$.pipe(
-      ofType(agentActions.set),
-      map(({ agent }) => agent),
-      filter((agent): agent is Agent => !!agent),
-      map(({ id }) => articleActions.searchGet({ agentId: id }))
     )
   );
 

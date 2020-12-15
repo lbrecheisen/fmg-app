@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { fromAuth } from '@fmg/auth';
-import { Article, articleActions } from '@fmg/domain';
+import { Article, articleActions, fromArticle } from '@fmg/domain';
 import { select, Store } from '@ngrx/store';
 
 @Component({
@@ -9,19 +9,9 @@ import { select, Store } from '@ngrx/store';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
-  @Input()
-  article: Article = {
-    id: '',
-    version: '',
-    title: '',
-    body: '',
-    category: '',
-    agentId: '',
-    isRemoved: false,
-    created: { by: '', on: new Date().toISOString() },
-    updated: { by: '', on: new Date().toISOString() },
-  };
+  @Input() article: Article | null = null;
   isAuthenticated$ = this.store.pipe(select(fromAuth.isAuthenticated));
+  isLoading$ = this.store.pipe(select(fromArticle.isLoading));
   isEditMode = false;
 
   constructor(private store: Store) {}
@@ -36,9 +26,13 @@ export class ArticleComponent implements OnInit {
     if (
       confirm(`Are you sure you want to delete the article titled '${title}'?`)
     ) {
-      this.store.dispatch(
-        articleActions.remove({ article: { ...this.article, isRemoved: true } })
-      );
+      if (this.article) {
+        this.store.dispatch(
+          articleActions.remove({
+            article: { ...this.article, isRemoved: true },
+          })
+        );
+      }
     }
   }
 

@@ -1,20 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fromAuth } from '@fmg/auth';
-import { articleActions, fromArticle } from '@fmg/domain';
+import { Agent, articleActions, fromAgent, fromArticle } from '@fmg/domain';
 import { select, Store } from '@ngrx/store';
+import { filter, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './articles.page.html',
   styleUrls: ['./articles.page.scss'],
 })
-export class ArticlesPage {
+export class ArticlesPage implements OnInit {
   article$ = this.store.pipe(select(fromArticle.articles));
   continuation$ = this.store.pipe(select(fromArticle.continuation));
   isAuthenticated$ = this.store.pipe(select(fromAuth.isAuthenticated));
+  agent$ = this.store.pipe(
+    select(fromAgent.agent),
+    filter((agent): agent is Agent => !!agent),
+    tap(({ id }) =>
+      this.store.dispatch(articleActions.searchGet({ agentId: id }))
+    )
+  );
 
   isAddingNewArticle = false;
 
   constructor(private store: Store) {}
+
+  ngOnInit(): void {}
 
   onLoadMoreClick(): void {
     this.store.dispatch(articleActions.searchNext());

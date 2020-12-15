@@ -6,7 +6,7 @@ import { produce } from 'immer';
 const initialState: ArticleState = {
   category: null,
   article: null,
-  articles: { items: [], continuation: '' },
+  articles: { items: [], continuation: null },
   isLoading: false,
   error: null,
 };
